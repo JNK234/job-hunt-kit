@@ -55,19 +55,28 @@ def unsupported_claims(text, facts_text, client):
         model=MODEL,
         state={"claims": claims, "sender_facts": facts_text},
         questions={f"c{i}": Noul(
-            instructions=f"Is every background fact that `claims[{i}]` states about the writer (degrees, employers, "
-                         f"titles, papers, numbers, results, visa status) supported by `sender_facts`? Paraphrase and "
-                         f"rounding are fine. What the writer wants, is looking for, or is asking for is not a "
-                         f"background fact. Answer yes if `claims[{i}]` states no background facts.")
+            instructions=f"Is every background fact that `claims[{i}]` states about the writer supported by "
+                         f"`sender_facts`? A statement of what the writer wants is not a background fact. "
+                         f"Answer yes if `claims[{i}]` states no background facts.")
             for i in range(len(claims))},
     )
-    return [c for i, c in enumerate(claims) if resp.answers[f"c{i}"].noul < 0.5]
+    # Wording and threshold chosen on planted true/false claims: false claims scored <= 0.21, true >= 0.40.
+    return [c for i, c in enumerate(claims) if resp.answers[f"c{i}"].noul < 0.3]
+
+
+def applies(q, context):
+    """applies_when: a list of relationships, or {context_field: [allowed values]}."""
+    cond = q.get("applies_when")
+    if not cond:
+        return True
+    if isinstance(cond, list):
+        return context.get("relationship") in cond
+    return all(context.get(field) in allowed for field, allowed in cond.items())
 
 
 def check(text, context, kind):
     rubric = yaml.safe_load((HERE / "rubrics" / f"{kind}.yaml").read_text())
-    questions = [q for q in rubric["questions"]
-                 if not q.get("applies_when") or context.get("relationship") in q["applies_when"]]
+    questions = [q for q in rubric["questions"] if applies(q, context)]
     facts = sender_facts()
     whole = [q for q in questions if not q.get("per_sentence")]
     per_sentence = [q for q in questions if q.get("per_sentence")]

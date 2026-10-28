@@ -1,5 +1,5 @@
 # ABOUTME: Gold-standard content questions for a written job-application answer. YES always = good.
-# ABOUTME: Context gives the exact question, the role, and the role's key requirements.
+# ABOUTME: Context: question, role, requirements, question_type (story | motivation). Story-only checks skip motivation answers.
 
 questions:
   - id: answers_the_question
@@ -7,22 +7,27 @@ questions:
     fix: Re-read the question and answer exactly what it asks, in the first two sentences.
 
   - id: one_story
+    applies_when: {question_type: [story]}
     question: Does `text` focus on one specific problem or situation, rather than a survey of several projects?
     fix: Pick the single strongest problem and go deep on it.
 
   - id: ownership_clear
+    applies_when: {question_type: [story]}
     question: Is it clear from `text` what the writer personally owned and did — their decisions and actions ("I decided", "I built") — as distinct from what the team did?
     fix: Say plainly which parts you owned and which decisions were yours.
 
   - id: difficulty_concrete
+    applies_when: {question_type: [story]}
     question: Does `text` explain concretely why the problem was hard — the specific constraint, uncertainty, or failure mode — rather than just calling it challenging or complex?
     fix: Name the exact thing that made it hard (the constraint, the unknown, the failure you had to catch).
 
   - id: decisions_with_tradeoffs
+    applies_when: {question_type: [story]}
     question: Does `text` describe at least one key decision together with the alternative that was rejected and why?
     fix: For your key decision, state the option you rejected and the reason.
 
   - id: outcome_stated
+    applies_when: {question_type: [story]}
     question: Does `text` state the outcome — what changed, shipped, or was learned — in concrete terms?
     fix: End the story with the concrete result and what it changed.
 
