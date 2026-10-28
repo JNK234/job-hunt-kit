@@ -25,7 +25,7 @@ questions:
 
   - id: every_line_earns
     per_sentence: true
-    question: Does `sentence` give the recipient something they need to act on the request — who the writer is, why this person, relevant evidence, the request itself, or the sign-off — rather than filler or repetition?
+    question: Does `sentence` give the recipient something they need — who the writer is, why this person, relevant evidence, the request itself, the sign-off, or, when `context.relationship` is warm or follow-up, sincere thanks or an update the recipient asked for — rather than filler or repetition?
     fix: "Cut or merge this sentence:"
 
   - id: sounds_human
