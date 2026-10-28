@@ -1,0 +1,39 @@
+# ABOUTME: Gold-standard content questions for a written job-application answer. YES always = good.
+# ABOUTME: Context gives the exact question, the role, and the role's key requirements.
+
+questions:
+  - id: answers_the_question
+    question: Does `text` directly answer the question in `context.question`, rather than a related or easier question?
+    fix: Re-read the question and answer exactly what it asks, in the first two sentences.
+
+  - id: one_story
+    question: Does `text` focus on one specific problem or situation, rather than a survey of several projects?
+    fix: Pick the single strongest problem and go deep on it.
+
+  - id: ownership_clear
+    question: Is it clear from `text` what the writer personally owned and did — their decisions and actions ("I decided", "I built") — as distinct from what the team did?
+    fix: Say plainly which parts you owned and which decisions were yours.
+
+  - id: difficulty_concrete
+    question: Does `text` explain concretely why the problem was hard — the specific constraint, uncertainty, or failure mode — rather than just calling it challenging or complex?
+    fix: Name the exact thing that made it hard (the constraint, the unknown, the failure you had to catch).
+
+  - id: decisions_with_tradeoffs
+    question: Does `text` describe at least one key decision together with the alternative that was rejected and why?
+    fix: For your key decision, state the option you rejected and the reason.
+
+  - id: outcome_stated
+    question: Does `text` state the outcome — what changed, shipped, or was learned — in concrete terms?
+    fix: End the story with the concrete result and what it changed.
+
+  - id: relevant_to_role
+    question: Does the story in `text` demonstrate skills that matter for the role described in `context.role` and `context.requirements`?
+    fix: Choose or frame the story around the role's core requirements.
+
+  - id: specific_not_generic
+    question: Does `text` use concrete specifics (systems, methods, data, numbers, names of tools) instead of generic statements that could appear in anyone's answer?
+    fix: Replace generic claims with the specific system, method, or number.
+
+  - id: sounds_human
+    question: Does `text` read like the writer speaking plainly about their own work — no buzzwords, hype, or AI-sounding filler?
+    fix: Rewrite the flagged lines in plain first-person language.

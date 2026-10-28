@@ -1,0 +1,63 @@
+% ABOUTME: Example master resume for one target track; copy to <Name>_<TRACK>.tex in the workspace resume/ folder.
+% ABOUTME: Compile with `tectonic <file>.tex` next to preamble.tex. Replace every PLACEHOLDER with facts from profile.md.
+
+\input{preamble}
+
+\newcommand{\ResumeName}{Your Name}
+\newcommand{\ResumePhone}{(555) 555-0100}
+\newcommand{\ResumeEmail}{you@example.com}
+\newcommand{\ResumePortfolio}{https://example.com}
+\newcommand{\ResumeGithub}{https://github.com/your-handle}
+\newcommand{\ResumeLinkedin}{https://linkedin.com/in/your-handle}
+
+\begin{document}
+
+\resumeHeader
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \item
+      \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{PLACEHOLDER University} $|$ \small{M.S. in PLACEHOLDER} & \textit{\small Sept 20XX -- May 20XX}
+      \end{tabular*}\vspace{-5pt}
+  \resumeSubHeadingListEnd
+
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, topsep=0pt, itemsep=-2pt]
+    \small{
+     \item \textbf{Category One}{: Skill, Skill, Skill (only skills a bullet below proves)}
+     \item \textbf{Category Two}{: Skill, Skill, Skill}
+    }
+ \end{itemize}\vspace{-5pt}
+
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+    {PLACEHOLDER Company}{City, ST}
+    {PLACEHOLDER Title}{Mon 20XX -- Present}
+    \resumeItemListStart
+        \resumeItem{Verb-first result: what you built, for whom, and what changed (one line if possible).}
+        \resumeItem{Second bullet that proves a different skill the target role asks for.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Projects}
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{PLACEHOLDER Project} $|$ \emph{Stack, Stack}}{\textit{\small Mon 20XX}}
+        \resumeItemListStart
+            \resumeItem{Question or problem, method, and finding in one or two lines.}
+        \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\section{Publications \& Awards}
+\resumeSubHeadingListStart
+    \item[]
+    \resumeItemListStart
+        \resumeItem{PLACEHOLDER Paper Title | Venue (authorship role, stated honestly)}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\end{document}

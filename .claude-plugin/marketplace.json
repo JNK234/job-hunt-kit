@@ -1,0 +1,13 @@
+{
+  "name": "job-hunt-kit",
+  "owner": {
+    "name": "JNK234"
+  },
+  "plugins": [
+    {
+      "name": "job-hunt-kit",
+      "source": "./",
+      "description": "Resumes from JD keyword research, tailored applications with judged answers, and tracked outreach."
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+% ABOUTME: Shared LaTeX preamble (packages, dense one-page layout, resume macros) for every resume in the workspace.
+% ABOUTME: Based on sb2nov/resume (MIT). Compile with tectonic (XeTeX); ligatures off so ATS text extraction stays clean.
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+% Ligatures off so ATS text extraction reads "official", not the ff-ligature glyph
+\usepackage{fontspec}
+\setmainfont{lmroman10}[Extension=.otf, UprightFont=*-regular, BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic, SmallCapsFont=lmromancaps10-regular, Ligatures=NoCommon]
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{csquotes}
+% \input{glyphtounicode} % commented out for tectonic compatibility — kept in base for Overleaf
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{fontawesome}
+\usetikzlibrary{svg.path}
+
+%----------COLOR DEFINITIONS----------
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{cvgreen}{HTML}{3BD80D}
+\definecolor{taggreen}{HTML}{00E278}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{name}{black}
+\colorlet{tagline}{darkcolor}
+\colorlet{heading}{darkcolor}
+\colorlet{headingrule}{cvblue}
+\colorlet{accent}{darkcolor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+%----------GLOBAL FORMATTING PARAMETERS----------
+% Page Layout
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Multi-column spacing
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+
+%----------BULLET POINT SETTINGS (GLOBAL)----------
+% Primary bullet (if needed, though we use label={} to hide it)
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+% Secondary bullet (for nested lists)
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+%----------LIST SPACING PARAMETERS (GLOBAL)----------
+\newlength{\globalLeftMargin}
+\setlength{\globalLeftMargin}{0.8em}
+
+\newlength{\globalLabelSep}
+\setlength{\globalLabelSep}{-10pt}
+
+\newlength{\globalItemSep}
+\setlength{\globalItemSep}{-2pt}
+
+\newlength{\globalSubItemSep}
+\setlength{\globalSubItemSep}{-4pt}
+
+\newlength{\globalSubsectionSep}
+\setlength{\globalSubsectionSep}{1pt}
+
+%----------SECTION FORMATTING----------
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure PDF is machine readable/ATS parsable
+% \pdfgentounicode=1 % commented out for tectonic compatibility — kept in base for Overleaf
+
+%----------CUSTOM COMMANDS----------
+% Main resume item
+\newcommand{\resumeItem}[1]{
+  \item{\small #1\par}\vspace{\globalItemSep}
+}
+
+% Subheading with roles and dates
+\newcommand{\resumeSubheading}[4]{
+  \vspace{\globalSubsectionSep}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} $|$ \textbf{#3} & \small#2 $|$ \textit{\small #4} \\
+    \end{tabular*}\vspace{-15pt}
+}
+
+% Subheading within sections
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+% Project Heading
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{\globalSubsectionSep}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-15pt}
+}
+
+% Subitem (secondary bullet point)
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{\globalSubItemSep}}
+
+% List environments using global parameters
+\newcommand{\resumeSubHeadingListStart}{
+  \begin{itemize}[
+    leftmargin=0in,
+    topsep=0pt,
+    label={}
+  ]
+}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+\newcommand{\resumeItemListStart}{
+  \begin{itemize}[
+    align=left,
+    leftmargin=\globalLeftMargin,
+    labelsep=\globalLabelSep
+  ]
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
+
+%----------HEADER----------
+% Each master defines \ResumeName, \ResumePhone, \ResumeEmail and the three link commands before \begin{document}.
+\newcommand{\resumeHeader}{
+\begin{center}
+    \textbf{\Huge \ResumeName} \\ \vspace{3pt}
+    \small
+    \href{tel:\ResumePhone}{\raisebox{-0.1\height}\faPhone\ {\underline{\ResumePhone}} ~}
+    \href{mailto:\ResumeEmail}{\raisebox{-0.1\height}\faEnvelope\ {\underline{\ResumeEmail}} ~}
+    \href{\ResumePortfolio}{\raisebox{-0.2\height}\faGlobe\ {\underline{Portfolio}} ~}
+    \href{\ResumeGithub}{\raisebox{-0.1\height}\faGithub\ {\underline{GitHub}} ~}
+    \href{\ResumeLinkedin}{\raisebox{-0.1\height}\faLinkedinSquare\ {\underline{LinkedIn}}}
+\end{center}
+}

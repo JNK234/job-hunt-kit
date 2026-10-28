@@ -1,0 +1,37 @@
+# ABOUTME: Gold-standard content questions for an outreach email. YES always = good.
+# ABOUTME: Each question is answered by Jev; every NO comes back with its fix.
+
+questions:
+  - id: why_you
+    question: Within its first two sentences, does `text` say why the sender is writing to this specific person — the person who referred them, a real shared context, or something specific about the recipient's work?
+    fix: Open with the referrer or the specific reason you chose this person, in one sentence.
+
+  - id: referrer_named
+    applies_when: [referral]
+    question: Does `text` name the referrer given in `context.referrer` within its first two sentences?
+    fix: Name who referred you in the first line.
+
+  - id: one_ask
+    question: Does `text` make exactly one request of the recipient? ("Are you hiring for X, or is there someone I should talk to?" counts as one request.)
+    fix: Keep one ask and delete the others.
+
+  - id: ask_specific
+    question: Is the request in `text` specific — it names a role, team, person, or one small concrete action such as a yes/no question, a forward, or a 15-minute call — rather than vague like "any opportunities", "anything that fits", or "let's connect"?
+    fix: "Make the ask concrete, e.g. 'Is your team hiring AI/ML engineers right now, or is there someone you'd suggest I talk to?'"
+
+  - id: evidence_fits
+    question: Is the sender evidence in `text` (experience, projects, results) chosen to match what the recipient described in `context` needs or works on, rather than a generic list of everything the sender has done?
+    fix: Keep the two or three facts closest to what this person needs; cut the rest.
+
+  - id: every_line_earns
+    per_sentence: true
+    question: Does `sentence` give the recipient something they need to act on the request — who the writer is, why this person, relevant evidence, the request itself, or the sign-off — rather than filler or repetition?
+    fix: "Cut or merge this sentence:"
+
+  - id: sounds_human
+    question: Does `text` read like one person writing plainly to another — confident and specific, without begging ("any opportunity at all", "would really appreciate"), false politeness ("no rush at all", "sorry to bother"), hype words, or flattery of the recipient?
+    fix: Rewrite the flagged lines as plain statements of fact and one direct ask.
+
+  - id: visa_plain
+    question: Is `text` free of apologizing for, or over-explaining, the sender's visa or work-authorization status?
+    fix: "Use one plain line, e.g. 'I'm on OPT and will need STEM OPT support.'"

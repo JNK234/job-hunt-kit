@@ -1,0 +1,7 @@
+{
+  "name": "job-hunt-kit",
+  "description": "End-to-end job hunting with Claude Code: build master resumes from JD keyword research, tailor them, apply with judged answers, write and track outreach, and find the right people.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "keywords": ["resume", "job-search", "applications", "outreach", "latex", "ats"]
+}
